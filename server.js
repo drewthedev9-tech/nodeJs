@@ -4,13 +4,32 @@ const express = require ('express');
 
 const app = express();
 
-// get is the request method.
+// npm i body-parser
+const bodyParser = require('body-parser');
+
+
+
+// middleware to use body parser with express.
+// encoded being the part in postman under POST, Body , xxx-format.
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json());
+// different methods to check with postman.
+// get request.
+// the / is the localhost:3000
 app.get('/', (req,res)=>{
+    res.send('Getting Profile');
+})
+
+//  for form data if you were handling data from a form.
+// Post request:
+app.post('/profile', (req,res)=>{
+
+    // logging teh changes of form-data in postman.
+    console.log(req.body)
     const user = {
         name: 'Sally',
-        hobby: 'soccer'
+        hobby: 'Soccer'
     }
-    
     res.send(user);
 })
 app.listen(3000);
