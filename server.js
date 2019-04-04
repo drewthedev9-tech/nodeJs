@@ -8,10 +8,14 @@ const app = express();
 const bodyParser = require('body-parser');
 
 
+//  test out your server before you connect it to you frot end.
+// ////// Thsi swhole thing could be used for sending and updating teh database 
+//  sending respinses to the server.
 
 // middleware to use body parser with express.
 // encoded being the part in postman under POST, Body , xxx-format.
 app.use(bodyParser.urlencoded({extended:false}))
+// used to send json files.
 app.use(bodyParser.json());
 // different methods to check with postman.
 // get request.
