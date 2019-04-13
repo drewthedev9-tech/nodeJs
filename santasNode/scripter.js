@@ -32,8 +32,24 @@ question1();
     
 function question2() {
     fs.readFile('./santa.txt', (err, data)=>{
+        console.time('santa-time');
         const directions = data.toString();
-        const directionsArray = directions.split('');
-        const answer = directionArray.some((currentValue))
-    })
+        const directionArray = directions.split('');
+        let accumulator = 0;
+        let counter = 0;
+        const answer = directionArray.some((currentItem)=>{
+            if (currentItem === '('){
+                accumulator += 1;
+            } else if (currentItem ===')'){
+                accumulator -= 1
+            }
+            counter ++;
+            return accumulator < 0;
+    
+            })
+            console.timeEnd('santa-time')
+            console.log('Basement entered at:', counter)
+        })
 }
+
+question2();
